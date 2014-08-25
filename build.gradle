@@ -1,0 +1,45 @@
+buildscript {
+    ext {
+        bootVersion = '1.1.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${bootVersion}")
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+version = '1.0'
+bootVersion = '1.1.0.RELEASE'
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:${bootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-social-twitter:${bootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-thymeleaf:${bootVersion}")
+    //compile("org.springframework.boot:spring-boot-starter-security:${bootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-actuator:${bootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("com.h2database:h2")
+
+    //providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:${bootVersion}")
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

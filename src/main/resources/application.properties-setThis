@@ -1,0 +1,20 @@
+#
+# Set the twitter appId and appSecret below,
+# then rename this file to remove '-setThis'
+# before running the webapp.
+#
+# The entry point for the app is:
+# http://localhost:8080/following.html
+#
+
+
+#server.port=8080
+
+security.user.name=user # login username
+security.user.password=password # login password
+
+#Twitter
+
+spring.social.twitter.appId=
+spring.social.twitter.appSecret=
+

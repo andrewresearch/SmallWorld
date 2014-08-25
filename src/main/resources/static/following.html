@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--<html ng-app="control-ui">-->
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <script src="app/following-app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app/following-data.js" type="text/javascript" charset="utf-8"></script>
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+    
+<body ng-app="follow-ui">
+    <h4>Who Is Following Me Home Page</h4>
+    <p>This is an intial test page for the who is following me app.</p>
+    <div>&nbsp;</div>
+    <div ng-controller="followers">
+        <div>twitterName: <input type="text" ng-model="name"></input></div>
+
+        <div class="small">Text is: {{name}}</div>
+
+        <div ng-click="getFollowersForName(name)" class="btn btn-default">Get Followers</div>
+        <div ng-click="getFollowersOfFollowersForName(name)" class="btn btn-default">Get Followers Of Followers</div>
+        <div ng-click="getTimelineForName(name)" class="btn btn-default">Get Timeline</div>
+
+
+        <div ng-if='followersLoaded'>
+            <div>Found {{followers.length}} followers:</div>
+            <div>{{followers}}</div>
+            <select ng-model="follower" ng-change="selectchange(follower)" ng-options="follower as follower for follower in followers">
+                <option value="select">Select follower</option>
+            </select>
+            <div>Result: {{follower}} </div>
+            <div ng-click="getFollowersForName(follower)" class="btn btn-default">Get Followers</div>
+        </div>
+        <hr />
+        <div ng-if="followersOfFollowersLoaded">
+            <div>Result: {{followersOfFollowers}}</div>
+        </div>
+        <hr />
+        <div ng-if="timelineLoaded">
+            <div>Result: {{timeline}}</div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
